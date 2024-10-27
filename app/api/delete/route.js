@@ -9,7 +9,7 @@ export async function DELETE(req) {
   try {
     await connectMongoDB();
     // const res = await Task.deleteOne( {_id: mongoose.Types.ObjectId(id)});
-    await Task.findByIdAndDelete(id);
+    await Task.findOneAndDelete({ _id: id });
     // console.log(res);
     return NextResponse.json({ message: "deleted" });
     // console.log(id);

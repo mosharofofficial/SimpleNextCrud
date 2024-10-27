@@ -104,7 +104,7 @@ const Registration = () => {
           </label>
           <button
             type="submit"
-            className="text-xl px-1 py-3 border-[4px] input-border w-full mt-2 rounded-lg"
+            className="text-xl px-1 py-3 border-[4px] input-border w-full mt-2 rounded-lg active:bg-black active:text-white"
           >
             Submit
           </button>

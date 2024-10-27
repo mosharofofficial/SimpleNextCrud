@@ -1,3 +1,4 @@
+import User from "@/app/models/user";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -8,8 +9,21 @@ const authOptions = {
       credentials: {},
 
       async authorize(credentials) {
-        const user = { id: "1" };
-        return user;
+        const {email, password} = credentials;
+        
+        try {
+          const user = await User.findOne({ email });
+          console.log("credentials: ",credentials);
+          console.log("User: ", user)
+          // if (!user) {
+
+          //   return null;
+          // }
+
+          return user
+        } catch (error) {
+          console.log(error)
+        }
       },
     }),
   ],

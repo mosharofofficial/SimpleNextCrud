@@ -1,11 +1,11 @@
-'use client'
+"use client";
 import { signIn } from "next-auth/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
 const LoginForm = () => {
-const router = useRouter()
+  const router = useRouter();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [err, setErr] = useState();
@@ -15,19 +15,16 @@ const router = useRouter()
 
     try {
       const res = await signIn("credentials", {
-        email, password
-      })
+        email,
+        password,
+      });
 
       if (res.error) {
-        setErr("invalid credentials")
+        setErr("invalid credentials");
       }
-
-      router.replace('/todos')
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   };
-  
+
   return (
     <div className="border-[4px] input-border rounded-xl p-10">
       <h1 className="text-5xl text-center mb-5">Login</h1>
@@ -81,7 +78,7 @@ const router = useRouter()
           </label>
           <button
             type="submit"
-            className="text-xl px-1 py-3 border-[4px] input-border w-full mt-2 rounded-lg"
+            className="text-xl px-1 py-3 border-[4px] input-border w-full mt-2 rounded-lg active:bg-black active:text-white"
           >
             Submit
           </button>
